@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <title>Jogo da Velha Imbatível</title>
+</head>
+
+<body>
+    <h1>Jogo da Velha Imbatível</h1>
+
+    <table class="tabela">
+        <tr>
+            <td class="caixa" id="0"></td>
+            <td class="caixa" id="1"></td>
+            <td class="caixa" id="2"></td>
+        </tr>
+        <tr>
+            <td class="caixa" id="3"></td>
+            <td class="caixa" id="4"></td>
+            <td class="caixa" id="5"></td>
+        </tr>
+        <tr>
+            <td class="caixa" id="6"></td>
+            <td class="caixa" id="7"></td>
+            <td class="caixa" id="8"></td>
+        </tr>
+    </table>
+
+<div class="background-fim-do-jogo">
+    <div class="fim-do-jogo">
+        <div class="texto"></div>
+        <button class="replay" onclick="iniciaJogo()">Jogar Novamente</button>
+    </div>
+</div>
+
+    <!-- <button class="replay" onclick="iniciaJogo()">Jogar Novamente</button> -->
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
