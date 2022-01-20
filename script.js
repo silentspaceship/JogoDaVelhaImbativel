@@ -111,7 +111,7 @@ function empate() {
         }
 
         setTimeout(() => {
-            declararVencedor("Um empate, o que não significa que o computador tenha perdido. 🤖");
+            declararVencedor("Empate. O que não significa que o computador tenha perdido. 🤖");
         }, 800);
 
         return true;

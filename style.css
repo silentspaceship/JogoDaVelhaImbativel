@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap');
 
 * {
     box-sizing: border-box;
@@ -116,6 +117,37 @@ button.replay {
 button.replay:hover {
     transform: scale(1.08);
     background-color: sienna;
+}
+
+.caixa-autoria {
+    position: fixed;
+    display: flex;
+    background-color: #666;
+    color: white;
+    border-top-left-radius: 0.6rem;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40px;
+    width: 120px;
+    padding: 1rem;
+    transition: color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), background-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.caixa-autoria:hover {
+    background-color: black;
+    color: olivedrab;
+}
+
+.caixa-autoria i {
+    font-size: 1.5rem;
+}
+
+.caixa-autoria p {
+    font-family: 'Big Shoulders Display', cursive;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: 600px) {
