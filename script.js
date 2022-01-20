@@ -35,7 +35,7 @@ function proximoTurno(quadrado) {
         if (!empate()) {
             setTimeout(() => {
                 turno(melhorJogada(), computador);
-            }, 50);
+            }, 5);
         }
     }
 }
@@ -84,7 +84,9 @@ function fimDeJogo(vitoria) {
         caixas[i].removeEventListener('click', proximoTurno, false);
     }
 
-    declararVencedor(vitoria.jogador == usuario ? "Você venceu! Mas como? 🤔" : "Você perdeu! Quem sabe na próxima... 🥱")
+    setTimeout(() => {
+        declararVencedor(vitoria.jogador == usuario ? "Você venceu... Só pode ser um erro na Matrix. 🤔" : "Você perdeu, quem sabe na próxima... 🥱")
+    }, 800);
 }
 
 function declararVencedor(quem) {
@@ -98,18 +100,77 @@ function quadradosVazios() {
 }
 
 function melhorJogada() {
-    return quadradosVazios()[0];
+    return minimax(tabela, computador).index;
 }
 
 function empate() {
     if (quadradosVazios().length == 0) {
         for (let i = 0; i < caixas.length; i++) {
-            caixas[i].style.backgroundColor = "lightgreen";
+            caixas[i].style.backgroundColor = "royalblue";
             caixas[i].removeEventListener('click', proximoTurno, false);  
         }
 
-        declararVencedor("Empate!");
+        setTimeout(() => {
+            declararVencedor("Um empate, o que não significa que o computador tenha perdido. 🤖");
+        }, 800);
+
         return true;
     }
     return false;
+}
+
+function minimax(novaTabela, jogador) {
+    var espacosDisponiveis = quadradosVazios(novaTabela);
+
+    if (verificaVitoria(novaTabela, usuario)) {
+        return {score: -10};
+    } else if (verificaVitoria(novaTabela, computador)) {
+        return {score: 10};
+    } else if (espacosDisponiveis.length === 0) {
+        return {score: 0};
+    }
+
+    var movimentos = [];
+
+    for (let i = 0; i < espacosDisponiveis.length; i++) {
+        var movimento = {};
+        movimento.index = novaTabela[espacosDisponiveis[i]];
+        novaTabela[espacosDisponiveis[i]] = jogador;
+
+        if (jogador == computador) {
+            var resultado = minimax(novaTabela, usuario);
+            movimento.score = resultado.score;
+        } else {
+            var resultado = minimax(novaTabela, computador);
+            movimento.score = resultado.score;
+        }
+
+        novaTabela[espacosDisponiveis[i]] = movimento.index;
+
+        movimentos.push(movimento);
+    }
+
+    var melhorMovimento;
+
+    if (jogador === computador) {
+        var melhorScore = -10000;
+
+        for (let i = 0; i < movimentos.length; i++) {
+            if (movimentos[i].score > melhorScore) {
+                melhorScore = movimentos[i].score;
+                melhorMovimento = i;
+            }
+        }
+    } else {
+        var melhorScore = 10000;
+
+        for (let i = 0; i < movimentos.length; i++) {
+            if (movimentos[i].score < melhorScore) {
+                melhorScore = movimentos[i].score;
+                melhorMovimento = i;
+            }
+        }
+    }
+
+    return movimentos[melhorMovimento];
 }
