@@ -154,4 +154,30 @@ button.replay:hover {
     body {
         justify-content: center;
     }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 5rem;
+    }
+
+    .fim-do-jogo {
+        width: 20rem;
+        height: 16rem;
+    }
+
+    .fim-do-jogo .texto {
+        font-size: 1.8rem;
+    }
+
+    button.replay {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .caixa {
+        width: 5rem;
+        height: 5rem;
+    }
 }
